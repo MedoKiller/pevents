@@ -1,6 +1,5 @@
 package com.pardus.pevents;
 
-import com.pardus.pevents.exception.EventNotFoundException;
 import com.pardus.pevents.model.Event;
 import com.pardus.pevents.service.EventService;
 import org.springframework.http.HttpStatus;
@@ -33,6 +32,7 @@ public class EventResource {
 
     @PostMapping("/add")
     public ResponseEntity<Event> addEvent(@RequestBody Event event){
+
         Event newEvent=eventService.addEvent(event);
         return new ResponseEntity<>(newEvent, HttpStatus.CREATED);
     }
