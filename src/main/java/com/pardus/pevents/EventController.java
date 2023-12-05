@@ -10,11 +10,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/event")
-public class EventResource {
+public class EventController {
 
     private final EventService eventService;
 
-    public EventResource(EventService eventService) {
+    public EventController(EventService eventService) {
         this.eventService = eventService;
     }
 
