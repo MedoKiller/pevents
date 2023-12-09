@@ -2,10 +2,12 @@ package com.pardus.pevents.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "veličina_grada")
 @SequenceGenerator(name = "v_grad_seq",sequenceName = "veličina_grada_id_seq",allocationSize = 1)
-public class CitySize {
+public class CitySize implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "v_grad_seq")

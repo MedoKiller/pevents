@@ -2,10 +2,12 @@ package com.pardus.pevents.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "tip_organizacijske_jedinice")
 @SequenceGenerator(name = "toj_seq",sequenceName = "tip_organizacijske_jedinice_id_seq",allocationSize = 1)
-public class OrganizationUnitType {
+public class OrganizationUnitType implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "toj_seq")
