@@ -22,7 +22,7 @@ public class OrganizationUnitTypeController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<OrganizationUnitType>> getAllEvents(){
+    public ResponseEntity<List<OrganizationUnitType>> getAllOrganizationUnitTypes(){
         List<OrganizationUnitType> organizationUnitTypes=organizationUnitTypeService.findAllOrganizationUnitTypes();
         return new ResponseEntity<>(organizationUnitTypes, HttpStatus.OK);
     }
