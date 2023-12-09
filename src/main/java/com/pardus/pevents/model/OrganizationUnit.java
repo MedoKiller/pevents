@@ -28,4 +28,43 @@ public class OrganizationUnit implements Serializable {
     @JoinColumn(name = "parent_id")
     private OrganizationUnit parentOrganizationUnit;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public OrganizationUnitType getOrganizationUnitType() {
+        return organizationUnitType;
+    }
+
+    public void setOrganizationUnitType(OrganizationUnitType organizationUnitType) {
+        this.organizationUnitType = organizationUnitType;
+    }
+
+    public OrganizationUnit getParentOrganizationUnit() {
+        return parentOrganizationUnit;
+    }
+
+    public void setParentOrganizationUnit(OrganizationUnit parentOrganizationUnit) {
+        this.parentOrganizationUnit = parentOrganizationUnit;
+    }
 }
