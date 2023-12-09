@@ -17,6 +17,14 @@ public class City implements Serializable {
     @Column(name = "naziv")
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "velicina_grada_id")
+    private CitySize citySize;
+
+    @ManyToOne
+    @JoinColumn(name = "org_jedinica_id")
+    private OrganizationUnit organizationUnit;
+
     public Long getId() {
         return id;
     }
@@ -32,4 +40,22 @@ public class City implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public CitySize getCitySize() {
+        return citySize;
+    }
+
+    public void setCitySize(CitySize citySize) {
+        this.citySize = citySize;
+    }
+
+    public OrganizationUnit getOrganizationUnit() {
+        return organizationUnit;
+    }
+
+    public void setOrganizationUnit(OrganizationUnit organizationUnit) {
+        this.organizationUnit = organizationUnit;
+    }
+
+
 }
