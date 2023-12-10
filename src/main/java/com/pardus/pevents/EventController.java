@@ -1,6 +1,8 @@
 package com.pardus.pevents;
 
+import com.pardus.pevents.dto.EventSimpleSearchDTO;
 import com.pardus.pevents.model.Event;
+import com.pardus.pevents.model.EventSimpleSearch;
 import com.pardus.pevents.service.EventService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,5 +50,13 @@ public class EventController {
         eventService.deleteEvent(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping("/find/simple")
+    public ResponseEntity<List<Event>> addEvent(@RequestBody EventSimpleSearchDTO eventDto){
+        EventSimpleSearch eventSimpleSearch=RequestMapper.map(eventDto);
+        List<Event> events=eventService.findSimpleSearch(eventSimpleSearch);
+        return new ResponseEntity<>(events, HttpStatus.CREATED);
+    }
+
 
 }

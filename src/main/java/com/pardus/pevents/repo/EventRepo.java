@@ -2,7 +2,10 @@ package com.pardus.pevents.repo;
 
 import com.pardus.pevents.model.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface EventRepo extends JpaRepository<Event, Long> {
@@ -11,5 +14,7 @@ public interface EventRepo extends JpaRepository<Event, Long> {
 
     Optional<Event> findEventById(Long id);
 
+    @Query(nativeQuery = true, value = "select * from događaj where naziv like :name")
+    List<Event> findSimpleSearch(@Param("name") String name);
 
 }
