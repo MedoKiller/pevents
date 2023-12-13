@@ -26,4 +26,8 @@ public class CityService {
     public List<City> findAllCities(){
         return cityRepo.findAll();
     }
+
+    public List<City> findMunicipalitiesCities(List<Integer> munIds){
+        return this.cityRepo.findMunicipalitiesCities(munIds);
+    }
 }

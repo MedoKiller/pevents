@@ -5,9 +5,7 @@ import com.pardus.pevents.model.OrganizationUnitType;
 import com.pardus.pevents.service.OrganizationUnitService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +25,17 @@ public class OrganizationUnitController {
         List<OrganizationUnit> organizationUnits=organizationUnitService.findAllOrganizationUnits();
         return new ResponseEntity<>(organizationUnits, HttpStatus.OK);
     }
+
+    @GetMapping("/allRegions")
+    public ResponseEntity<List<OrganizationUnit>> getAllRegions(){
+        List<OrganizationUnit> organizationUnits=organizationUnitService.findAllRegions();
+        return new ResponseEntity<>(organizationUnits, HttpStatus.OK);
+    }
+
+    @PostMapping("/regionMunicipalities")
+    public ResponseEntity<List<OrganizationUnit>> getRegionMunicipalities(@RequestBody List<Integer> regionIds){
+        List<OrganizationUnit> organizationUnits=organizationUnitService.findRegionMunicipalities(regionIds);
+        return new ResponseEntity<>(organizationUnits, HttpStatus.OK);
+    }
+
 }
