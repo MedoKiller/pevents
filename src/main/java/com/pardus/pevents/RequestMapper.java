@@ -13,7 +13,7 @@ public class RequestMapper {
     public static Search map(SearchDTO searchDTO){
 
         Search result = new Search();
-        result.setName(searchDTO.getName());
+        result.setName(searchDTO.getEventName());
         result.setDateFrom(searchDTO.getDateFrom());
         result.setDateTo(searchDTO.getDateTo());
         result.setFreeEntrance(searchDTO.getFreeEntrance());

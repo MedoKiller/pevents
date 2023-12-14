@@ -11,11 +11,12 @@ import java.util.List;
 public interface SearchRepo extends JpaRepository<Event, Long> {
 
     @Query(nativeQuery = true, value =
-            "select * from događaj where (naziv like :searchName or naziv is null)" +
-            " and (vrijeme_od = :dateFrom or vrijeme_od is null) " +
-                    "and (vrijeme_do = :dateTo or vrijeme_do is null)" +
-                        "and (slobodan_ulaz=:freeEntrance or slobodan_ulaz is null)" +
-                            "(and grad_id in :cityIds)")
+            "SELECT * FROM događaj e WHERE " +
+                    "(e.naziv LIKE COALESCE(?1, e.naziv)) AND " +
+                    "(e.vrijeme_od >= COALESCE(?2, e.vrijeme_od)) AND " +
+                    "(e.vrijeme_do <= COALESCE(?3, e.vrijeme_do)) AND " +
+                    "(e.slobodan_ulaz = COALESCE(?4, e.slobodan_ulaz)) AND " +
+                    "(e.grad_id IN (?5) OR (?5) IS NULL)")
     List<Event> doSearch(String searchName, ZonedDateTime dateFrom, ZonedDateTime dateTo,String freeEntrance, List<Integer> cityIds);
 
 }

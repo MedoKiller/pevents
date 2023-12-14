@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SearchDTO {
 
-    private String name;
+    private String eventName;
 
     private ZonedDateTime dateFrom;
 
@@ -15,12 +15,12 @@ public class SearchDTO {
 
     private List<Integer> cityIds;
 
-    public String getName() {
-        return name;
+    public String getEventName() {
+        return eventName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
     public String getFreeEntrance() {
