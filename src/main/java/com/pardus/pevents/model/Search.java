@@ -1,9 +1,9 @@
 package com.pardus.pevents.model;
 
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.List;
 
-public class EventSimpleSearch {
+public class Search {
 
 
     private String name;
@@ -14,7 +14,7 @@ public class EventSimpleSearch {
 
     private String freeEntrance;
 
-    private Long cityId;
+    private List<Integer> cityIds;
 
     public String getName() {
         return name;
@@ -49,11 +49,11 @@ public class EventSimpleSearch {
         this.freeEntrance = freeEntrance;
     }
 
-    public Long getCityId() {
-        return cityId;
+    public List<Integer> getCityIds() {
+        return cityIds;
     }
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setCityIds(List<Integer> cityIds) {
+        this.cityIds = cityIds;
     }
 }

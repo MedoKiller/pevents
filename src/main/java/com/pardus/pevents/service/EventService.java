@@ -2,7 +2,7 @@ package com.pardus.pevents.service;
 
 import com.pardus.pevents.exception.EventNotFoundException;
 import com.pardus.pevents.model.Event;
-import com.pardus.pevents.model.EventSimpleSearch;
+import com.pardus.pevents.model.Search;
 import com.pardus.pevents.repo.EventRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +40,4 @@ public class EventService {
                 orElseThrow(()->new EventNotFoundException("Event with id "+id+" was not found"));
     }
 
-    public List<Event> findSimpleSearch(EventSimpleSearch eventSimpleSearch){
-        return eventRepo.findSimpleSearch("%"+eventSimpleSearch.getName()+"%");
-    }
 }
