@@ -12,7 +12,7 @@ public interface SearchRepo extends JpaRepository<Event, Long> {
 
     @Query(nativeQuery = true, value =
             "SELECT * FROM događaj e WHERE " +
-                    "(e.naziv LIKE COALESCE(?1, e.naziv)) AND " +
+                    "(lower(e.naziv) LIKE COALESCE(?1, lower(e.naziv))) AND " +
                     "(e.vrijeme_od >= COALESCE(?2, e.vrijeme_od)) AND " +
                     "(e.vrijeme_do <= COALESCE(?3, e.vrijeme_do)) AND " +
                     "(e.slobodan_ulaz = COALESCE(?4, e.slobodan_ulaz)) AND " +

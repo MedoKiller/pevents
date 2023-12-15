@@ -21,7 +21,7 @@ public class SearchService {
 
     public List<Event> doSearch(Search search){
 
-        String searchName=(search.getName()!=null) ? "%"+search.getName()+"%" : null;
+        String searchName=(search.getName()!=null) ? "%"+search.getName().toLowerCase()+"%" : null;
         ZonedDateTime dateFrom=search.getDateFrom();
         ZonedDateTime dateTo=search.getDateTo();
         String freeEntrance=search.getFreeEntrance();

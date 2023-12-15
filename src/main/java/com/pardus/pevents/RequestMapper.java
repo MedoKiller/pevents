@@ -1,6 +1,10 @@
 package com.pardus.pevents;
 
+import com.pardus.pevents.dto.CityDTO;
+import com.pardus.pevents.dto.EventDTO;
 import com.pardus.pevents.dto.SearchDTO;
+import com.pardus.pevents.model.City;
+import com.pardus.pevents.model.Event;
 import com.pardus.pevents.model.Search;
 
 import java.time.ZonedDateTime;
@@ -21,5 +25,24 @@ public class RequestMapper {
 
         return result;
     }
+
+    public static Event map(EventDTO eventDTO){
+        Event event=new Event();
+        event.setName(eventDTO.getName());
+        event.setCity(map(eventDTO.getCityDTO()));
+        event.setDateFrom();
+
+    }
+
+    public static City map(CityDTO cityDTO){
+        City city=new City();
+        city.setId(cityDTO.getId());
+        city.setName(cityDTO.getName());
+
+        return city;
+    }
+
+
+
 
 }
