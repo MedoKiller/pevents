@@ -6,6 +6,7 @@ import com.pardus.pevents.model.Search;
 import com.pardus.pevents.repo.EventRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class EventService {
         return eventRepo.save(event);
     }
 
+    @Transactional
     public void deleteEvent(Long id){
         eventRepo.deleteEventById(id);
     }
