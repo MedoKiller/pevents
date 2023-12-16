@@ -1,5 +1,7 @@
 package com.pardus.pevents;
 
+import com.pardus.pevents.dto.CityDTO;
+import com.pardus.pevents.mapper.ResponseMapper;
 import com.pardus.pevents.model.City;
 import com.pardus.pevents.service.CityService;
 import org.springframework.http.HttpStatus;
@@ -19,9 +21,10 @@ public class CityController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<City>> getAllCities(){
+    public ResponseEntity<List<CityDTO>> getAllCities(){
         List<City> cities=cityService.findAllCities();
-        return new ResponseEntity<>(cities, HttpStatus.OK);
+        List<CityDTO> citiesResp= ResponseMapper.mapCities(cities);
+        return new ResponseEntity<>(citiesResp, HttpStatus.OK);
     }
 
     @PostMapping("/munCities")

@@ -1,15 +1,10 @@
 package com.pardus.pevents.dto;
 
-import com.pardus.pevents.model.City;
-
 import java.sql.Timestamp;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
+
 
 public class EventDTO {
 
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ssXX");
 
     private Long id;
 

@@ -1,6 +1,9 @@
 package com.pardus.pevents;
 
+import com.pardus.pevents.dto.EventDTO;
 import com.pardus.pevents.dto.SearchDTO;
+import com.pardus.pevents.mapper.RequestMapper;
+import com.pardus.pevents.mapper.ResponseMapper;
 import com.pardus.pevents.model.Event;
 import com.pardus.pevents.model.Search;
 import com.pardus.pevents.service.SearchService;
@@ -26,10 +29,11 @@ public class SearchController {
 
 
     @PostMapping("/filter")
-    public ResponseEntity<List<Event>> addEvent(@RequestBody SearchDTO searchDTO){
-        Search search=RequestMapper.map(searchDTO);
+    public ResponseEntity<List<EventDTO>> addEvent(@RequestBody SearchDTO searchDTO){
+        Search search= RequestMapper.map(searchDTO);
         List<Event> events=searchService.doSearch(search);
-        return new ResponseEntity<>(events, HttpStatus.CREATED);
+        List<EventDTO> respEvents = ResponseMapper.mapEvents(events);
+        return new ResponseEntity<>(respEvents, HttpStatus.CREATED);
     }
 
 

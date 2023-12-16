@@ -1,9 +1,9 @@
 package com.pardus.pevents;
 
 import com.pardus.pevents.dto.EventDTO;
-import com.pardus.pevents.dto.SearchDTO;
+import com.pardus.pevents.mapper.RequestMapper;
+import com.pardus.pevents.mapper.ResponseMapper;
 import com.pardus.pevents.model.Event;
-import com.pardus.pevents.model.Search;
 import com.pardus.pevents.service.EventService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,15 +34,17 @@ public class EventController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Event> addEvent(@RequestBody EventDTO eventDTO){
+    public ResponseEntity<EventDTO> addEvent(@RequestBody EventDTO eventDTO){
         Event newEvent=eventService.addEvent(RequestMapper.map(eventDTO));
-        return new ResponseEntity<>(newEvent, HttpStatus.CREATED);
+        EventDTO respEvent= ResponseMapper.map(newEvent);
+        return new ResponseEntity<>(respEvent, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Event> updateEvent(@RequestBody Event event){
-        Event updateEvent=eventService.updateEvent(event);
-        return new ResponseEntity<>(updateEvent, HttpStatus.OK);
+    public ResponseEntity<EventDTO> updateEvent(@RequestBody EventDTO eventDTO){
+        Event updateEvent=eventService.updateEvent(RequestMapper.mapUpdate(eventDTO));
+        EventDTO respEvent = ResponseMapper.map(updateEvent);
+        return new ResponseEntity<>(respEvent, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

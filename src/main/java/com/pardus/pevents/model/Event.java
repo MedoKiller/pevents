@@ -2,6 +2,7 @@ package com.pardus.pevents.model;
 
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -14,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 @SequenceGenerator(name = "event_seq",sequenceName = "događaj_id_seq",allocationSize = 1)
 public class Event implements Serializable {
 
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ssXX");
+    private static final String DEFAULT_ENTRANCE = "NE";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_seq")
@@ -37,7 +38,9 @@ public class Event implements Serializable {
     @JoinColumn(name = "grad_id")
     private City city;
 
-    public Event() {}
+    public Event() {
+        this.freeEntrance=DEFAULT_ENTRANCE;
+    }
 
     public Event(String name, Timestamp dateFrom, Timestamp dateTo, String freeEntrance) {
         this.name = name;

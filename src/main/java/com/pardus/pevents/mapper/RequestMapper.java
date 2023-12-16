@@ -1,4 +1,4 @@
-package com.pardus.pevents;
+package com.pardus.pevents.mapper;
 
 import com.pardus.pevents.dto.CityDTO;
 import com.pardus.pevents.dto.EventDTO;
@@ -7,12 +7,8 @@ import com.pardus.pevents.model.City;
 import com.pardus.pevents.model.Event;
 import com.pardus.pevents.model.Search;
 
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class RequestMapper {
-
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ssXX");
 
     public static Search map(SearchDTO searchDTO){
 
@@ -31,7 +27,9 @@ public class RequestMapper {
         event.setName(eventDTO.getName());
         event.setDateFrom(eventDTO.getDateFrom());
         event.setDateTo(eventDTO.getDateTo());
-        event.setFreeEntrance(eventDTO.getFreeEntrance());
+        if(eventDTO.getFreeEntrance()!=null){
+            event.setFreeEntrance(eventDTO.getFreeEntrance());
+        }
         event.setCity(map(eventDTO.getCityDTO()));
 
         return event;
@@ -45,6 +43,20 @@ public class RequestMapper {
         return city;
     }
 
+    public static Event mapUpdate(EventDTO eventDTO){
+        Event event=new Event();
+
+        event.setId(eventDTO.getId());
+        event.setName(eventDTO.getName());
+        event.setDateFrom(eventDTO.getDateFrom());
+        event.setDateTo(eventDTO.getDateTo());
+        if(eventDTO.getFreeEntrance()!=null){
+            event.setFreeEntrance(eventDTO.getFreeEntrance());
+        }
+        event.setCity(map(eventDTO.getCityDTO()));
+
+        return event;
+    }
 
 
 

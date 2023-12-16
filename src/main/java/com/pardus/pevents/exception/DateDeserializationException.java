@@ -1,4 +1,4 @@
-package com.pardus.pevents.config;
+package com.pardus.pevents.exception;
 
 public class DateDeserializationException extends RuntimeException {
 

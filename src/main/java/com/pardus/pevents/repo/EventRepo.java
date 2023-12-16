@@ -15,8 +15,6 @@ public interface EventRepo extends JpaRepository<Event, Long> {
 
     Optional<Event> findEventById(Long id);
 
-    @Query(nativeQuery = true, value = "select * from događaj where naziv like :name")
-    List<Event> findSimpleSearch(@Param("name") String name);
 
 
 }
