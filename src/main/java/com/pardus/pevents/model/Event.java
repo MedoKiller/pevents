@@ -4,6 +4,7 @@ package com.pardus.pevents.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -24,10 +25,10 @@ public class Event implements Serializable {
     private String name;
 
     @Column(name = "vrijeme_od")
-    private ZonedDateTime dateFrom;
+    private Timestamp dateFrom;
 
     @Column(name = "vrijeme_do")
-    private ZonedDateTime dateTo;
+    private Timestamp dateTo;
 
     @Column(name = "slobodan_ulaz")
     private String freeEntrance;
@@ -38,7 +39,7 @@ public class Event implements Serializable {
 
     public Event() {}
 
-    public Event(String name, ZonedDateTime dateFrom, ZonedDateTime dateTo, String freeEntrance) {
+    public Event(String name, Timestamp dateFrom, Timestamp dateTo, String freeEntrance) {
         this.name = name;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
@@ -61,21 +62,20 @@ public class Event implements Serializable {
         this.name = name;
     }
 
-    public ZonedDateTime getDateFrom() {
+    public Timestamp getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(String dateFrom) {
-        this.dateFrom = ZonedDateTime.parse(dateFrom, formatter);
+    public void setDateFrom(Timestamp dateFrom) {
+        this.dateFrom = dateFrom;
     }
 
-
-    public ZonedDateTime getDateTo() {
+    public Timestamp getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(String dateTo) {
-        this.dateTo = ZonedDateTime.parse(dateTo, formatter);
+    public void setDateTo(Timestamp dateTo) {
+        this.dateTo = dateTo;
     }
 
     public String getFreeEntrance() {

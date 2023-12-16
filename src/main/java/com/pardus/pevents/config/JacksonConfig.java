@@ -33,10 +33,10 @@ public class JacksonConfig {
   @Value("${am.api.json.datetime_format:yyyy-MM-dd'T'HH:mm:ss.SSS}")
   private String dateTimeFormat;
 
-  @Value("${am.api.json.timezone:Europe/Zagreb}")
+  @Value("${am.api.json.timezone:Europe/London}")
   private TimeZone timeZone;
 
-  @Value("${am.api.json.timezone:Europe/Zagreb}")
+  @Value("${am.api.json.timezone:Europe/London}")
   private String timeZoneString;
 
   private static final String RANGE_PARSE_EXCEPTION_MESSAGE = "Range could not be parsed";

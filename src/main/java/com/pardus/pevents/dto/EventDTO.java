@@ -2,6 +2,7 @@ package com.pardus.pevents.dto;
 
 import com.pardus.pevents.model.City;
 
+import java.sql.Timestamp;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -14,9 +15,9 @@ public class EventDTO {
 
     private String name;
 
-    private ZonedDateTime dateFrom;
+    private Timestamp dateFrom;
 
-    private ZonedDateTime dateTo;
+    private Timestamp dateTo;
 
     private String freeEntrance;
 
@@ -38,20 +39,20 @@ public class EventDTO {
         this.name = name;
     }
 
-    public ZonedDateTime getDateFrom() {
+    public Timestamp getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(String dateFrom) {
-        this.dateFrom = ZonedDateTime.parse(dateFrom, formatter);
+    public void setDateFrom(Timestamp dateFrom) {
+        this.dateFrom = dateFrom;
     }
 
-    public ZonedDateTime getDateTo() {
+    public Timestamp getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(String dateTo) {
-        this.dateTo = ZonedDateTime.parse(dateTo, formatter);
+    public void setDateTo(Timestamp dateTo) {
+        this.dateTo = dateTo;
     }
 
     public String getFreeEntrance() {

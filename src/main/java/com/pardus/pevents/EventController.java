@@ -1,5 +1,6 @@
 package com.pardus.pevents;
 
+import com.pardus.pevents.dto.EventDTO;
 import com.pardus.pevents.dto.SearchDTO;
 import com.pardus.pevents.model.Event;
 import com.pardus.pevents.model.Search;
@@ -33,8 +34,8 @@ public class EventController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Event> addEvent(@RequestBody Event event){
-        Event newEvent=eventService.addEvent(event);
+    public ResponseEntity<Event> addEvent(@RequestBody EventDTO eventDTO){
+        Event newEvent=eventService.addEvent(RequestMapper.map(eventDTO));
         return new ResponseEntity<>(newEvent, HttpStatus.CREATED);
     }
 

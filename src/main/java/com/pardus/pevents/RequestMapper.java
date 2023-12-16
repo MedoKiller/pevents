@@ -29,9 +29,12 @@ public class RequestMapper {
     public static Event map(EventDTO eventDTO){
         Event event=new Event();
         event.setName(eventDTO.getName());
+        event.setDateFrom(eventDTO.getDateFrom());
+        event.setDateTo(eventDTO.getDateTo());
+        event.setFreeEntrance(eventDTO.getFreeEntrance());
         event.setCity(map(eventDTO.getCityDTO()));
-        event.setDateFrom();
 
+        return event;
     }
 
     public static City map(CityDTO cityDTO){
