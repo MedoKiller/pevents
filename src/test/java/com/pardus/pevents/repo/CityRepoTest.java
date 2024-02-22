@@ -22,15 +22,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CityRepoTest {
 
     @Autowired
-    private CityRepo cityRepo;
+    private CityRepo testCityRepo;
 
     @Autowired
-    private OrganizationUnitRepo organizationUnitRepo;
+    private OrganizationUnitRepo testOrganizationUnitRepo;
 
     @AfterEach
     void tearDown() {
-        cityRepo.deleteAll();
-        organizationUnitRepo.deleteAll();
+        testCityRepo.deleteAll();
+        testOrganizationUnitRepo.deleteAll();
     }
 
     @Test
@@ -42,10 +42,10 @@ public class CityRepoTest {
         // city.setCitySize(...);
         // city.setOrganizationUnit(...);
 
-        City resultCity = cityRepo.save(city);
+        City resultCity = testCityRepo.save(city);
 
         // Test find by ID
-        Optional<City> foundCity = cityRepo.findCityById(resultCity.getId());
+        Optional<City> foundCity = testCityRepo.findCityById(resultCity.getId());
         assertThat(foundCity).isPresent();
         assertThat(foundCity.get().getName()).isEqualTo("Test City");
     }
@@ -59,8 +59,8 @@ public class CityRepoTest {
         orgUnitOne.setId(1L);
         orgUnitTwo.setId(2L);
 
-        organizationUnitRepo.save(orgUnitOne);
-        organizationUnitRepo.save(orgUnitTwo);
+        testOrganizationUnitRepo.save(orgUnitOne);
+        testOrganizationUnitRepo.save(orgUnitTwo);
 
         City testCityOne = new City();
         City testCityTwo = new City();
@@ -70,12 +70,12 @@ public class CityRepoTest {
 
         List<City> testCities = List.of(testCityOne,testCityTwo);
 
-        cityRepo.saveAll(testCities);
+        testCityRepo.saveAll(testCities);
 
         // act
         List<Long> testMunIds = List.of(orgUnitOne.getId(), orgUnitTwo.getId());
 
-        List<City> resultCities = cityRepo.findCitiesByMunicipalitiesIds(testMunIds);
+        List<City> resultCities = testCityRepo.findCitiesByMunicipalitiesIds(testMunIds);
 
         // assert
 
