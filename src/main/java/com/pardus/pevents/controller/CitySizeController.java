@@ -1,4 +1,4 @@
-package com.pardus.pevents;
+package com.pardus.pevents.controller;
 
 import com.pardus.pevents.model.CitySize;
 import com.pardus.pevents.service.CitySizeService;

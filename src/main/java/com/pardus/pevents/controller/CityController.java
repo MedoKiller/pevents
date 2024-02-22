@@ -1,4 +1,4 @@
-package com.pardus.pevents;
+package com.pardus.pevents.controller;
 
 import com.pardus.pevents.dto.CityDTO;
 import com.pardus.pevents.mapper.ResponseMapper;
@@ -28,8 +28,8 @@ public class CityController {
     }
 
     @PostMapping("/munCities")
-    public ResponseEntity<List<City>> getMunicipalitiesCities(@RequestBody List<Integer> municipalitiesIds){
-        List<City> cities=cityService.findMunicipalitiesCities(municipalitiesIds);
+    public ResponseEntity<List<City>> getMunicipalitiesCities(@RequestBody List<Long> municipalitiesIds){
+        List<City> cities=cityService.findCitiesByMunicipalitiesIds(municipalitiesIds);
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 }

@@ -12,5 +12,5 @@ public interface CityRepo extends JpaRepository<City,Long> {
     Optional<City> findCityById(Long id);
 
     @Query(nativeQuery = true, value = "select * from grad where org_jedinica_id in :munIds")
-    List<City> findMunicipalitiesCities(@Param("munIds") List<Integer> munIds);
+    List<City> findCitiesByMunicipalitiesIds(@Param("munIds") List<Long> munIds);
 }

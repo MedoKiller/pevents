@@ -26,9 +26,21 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+	testImplementation ('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		exclude group: 'org.junit.jupiter', module: 'junit-jupiter'
+		exclude group: 'org.junit.jupiter', module: 'junit-jupiter-api'
+		exclude group: 'org.junit.jupiter', module: 'junit-jupiter-engine'
+		exclude group: 'org.junit.jupiter', module: 'junit-jupiter-params'
+	}
+
+	// Add H2 database only for testing
+	testImplementation 'com.h2database:h2:2.1.210'
 }
 
 tasks.named('test') {
-	//useJUnitPlatform()
+	useJUnitPlatform()
 }

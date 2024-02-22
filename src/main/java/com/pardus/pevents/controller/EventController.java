@@ -1,4 +1,4 @@
-package com.pardus.pevents;
+package com.pardus.pevents.controller;
 
 import com.pardus.pevents.dto.EventDTO;
 import com.pardus.pevents.mapper.RequestMapper;

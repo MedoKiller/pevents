@@ -2,7 +2,6 @@ package com.pardus.pevents.service;
 
 import com.pardus.pevents.exception.CityNotFoundException;
 import com.pardus.pevents.model.City;
-import com.pardus.pevents.model.Event;
 import com.pardus.pevents.repo.CityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +26,7 @@ public class CityService {
         return cityRepo.findAll();
     }
 
-    public List<City> findMunicipalitiesCities(List<Integer> munIds){
-        return this.cityRepo.findMunicipalitiesCities(munIds);
+    public List<City> findCitiesByMunicipalitiesIds(List<Long> munIds){
+        return this.cityRepo.findCitiesByMunicipalitiesIds(munIds);
     }
 }

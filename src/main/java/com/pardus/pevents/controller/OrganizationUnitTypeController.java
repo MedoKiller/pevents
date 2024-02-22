@@ -1,4 +1,4 @@
-package com.pardus.pevents;
+package com.pardus.pevents.controller;
 
 import com.pardus.pevents.model.OrganizationUnitType;
 import com.pardus.pevents.service.OrganizationUnitTypeService;
