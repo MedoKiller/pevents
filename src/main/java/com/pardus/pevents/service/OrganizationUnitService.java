@@ -28,7 +28,7 @@ public class OrganizationUnitService {
         return organizationUnitRepo.findAllRegions(REGION_ID);
     }
 
-    public List<OrganizationUnit> findRegionMunicipalities(List<Integer> regionIds){
+    public List<OrganizationUnit> findRegionMunicipalities(List<Long> regionIds){
         return organizationUnitRepo.findRegionMunicipalities(regionIds);
     }
 }

@@ -12,6 +12,7 @@ public interface OrganizationUnitRepo extends JpaRepository<OrganizationUnit,Lon
     @Query(nativeQuery = true, value = "select * from organizacijska_jedinica where tip_org_jedinica_id = :regionId")
     List<OrganizationUnit> findAllRegions(@Param("regionId") Long regionId);
 
+
     @Query(nativeQuery = true, value = "select * from organizacijska_jedinica where parent_id in :regionIds")
-    List<OrganizationUnit> findRegionMunicipalities(@Param("regionIds") List<Integer> regionIds);
+    List<OrganizationUnit> findRegionMunicipalities(@Param("regionIds") List<Long> regionIds);
 }

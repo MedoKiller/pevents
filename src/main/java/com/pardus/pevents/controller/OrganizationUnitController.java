@@ -33,7 +33,7 @@ public class OrganizationUnitController {
     }
 
     @PostMapping("/regionMunicipalities")
-    public ResponseEntity<List<OrganizationUnit>> getRegionMunicipalities(@RequestBody List<Integer> regionIds){
+    public ResponseEntity<List<OrganizationUnit>> getRegionMunicipalities(@RequestBody List<Long> regionIds){
         List<OrganizationUnit> organizationUnits=organizationUnitService.findRegionMunicipalities(regionIds);
         return new ResponseEntity<>(organizationUnits, HttpStatus.OK);
     }
