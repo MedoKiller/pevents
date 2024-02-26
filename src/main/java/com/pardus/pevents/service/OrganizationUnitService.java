@@ -3,6 +3,7 @@ package com.pardus.pevents.service;
 import com.pardus.pevents.model.OrganizationUnit;
 import com.pardus.pevents.repo.OrganizationUnitRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +13,8 @@ public class OrganizationUnitService {
 
     private final OrganizationUnitRepo organizationUnitRepo;
 
-    private final Long REGION_ID = 1L;
+    @Value("${app.regionId}")
+    private Long REGION_ID;
 
     @Autowired
     public OrganizationUnitService(OrganizationUnitRepo organizationUnitRepo) {
