@@ -13,7 +13,7 @@ public class SearchDTO {
 
     private String freeEntrance;
 
-    private List<Integer> cityIds;
+    private List<Long> cityIds;
 
     public String getEventName() {
         return eventName;
@@ -31,11 +31,11 @@ public class SearchDTO {
         this.freeEntrance = freeEntrance;
     }
 
-    public List<Integer> getCityIds() {
+    public List<Long> getCityIds() {
         return cityIds;
     }
 
-    public void setCityIds(List<Integer> cityIds) {
+    public void setCityIds(List<Long> cityIds) {
         this.cityIds = cityIds;
     }
 

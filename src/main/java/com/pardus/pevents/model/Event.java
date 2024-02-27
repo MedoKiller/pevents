@@ -42,11 +42,12 @@ public class Event implements Serializable {
         this.freeEntrance=DEFAULT_ENTRANCE;
     }
 
-    public Event(String name, Timestamp dateFrom, Timestamp dateTo, String freeEntrance) {
+    public Event(String name, Timestamp dateFrom, Timestamp dateTo, String freeEntrance, City city) {
         this.name = name;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
         this.freeEntrance = freeEntrance;
+        this.city=city;
     }
 
     public Long getId() {

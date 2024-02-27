@@ -25,7 +25,7 @@ public class SearchService {
         ZonedDateTime dateFrom=search.getDateFrom();
         ZonedDateTime dateTo=search.getDateTo();
         String freeEntrance=search.getFreeEntrance();
-        List<Integer> cityIds=search.getCityIds();
+        List<Long> cityIds=search.getCityIds();
 
         return this.searchRepo.doSearch(searchName,dateFrom,dateTo,freeEntrance,cityIds);
     }

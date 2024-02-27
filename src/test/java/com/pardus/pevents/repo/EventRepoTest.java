@@ -29,7 +29,7 @@ public class EventRepoTest {
     @Test
     public void testDeleteEventById(){
         // arrange
-        Event testEvent = new Event("TestEvent",null,null,null);
+        Event testEvent = new Event("TestEvent",null,null,null,null);
         Event savedTestEvent = testEventRepo.save(testEvent);
 
         //act
@@ -43,7 +43,7 @@ public class EventRepoTest {
     @Test
     public void testFindEventById(){
         // arrange
-        Event testEvent= new Event("Test123",null,null,null);
+        Event testEvent= new Event("Test123",null,null,null,null);
         Event savedEvent=testEventRepo.save(testEvent);
 
         // act

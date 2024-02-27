@@ -14,7 +14,7 @@ public class Search {
 
     private String freeEntrance;
 
-    private List<Integer> cityIds;
+    private List<Long> cityIds;
 
     public String getName() {
         return name;
@@ -49,11 +49,11 @@ public class Search {
         this.freeEntrance = freeEntrance;
     }
 
-    public List<Integer> getCityIds() {
+    public List<Long> getCityIds() {
         return cityIds;
     }
 
-    public void setCityIds(List<Integer> cityIds) {
+    public void setCityIds(List<Long> cityIds) {
         this.cityIds = cityIds;
     }
 }
