@@ -6,11 +6,12 @@ import com.pardus.pevents.dto.SearchDTO;
 import com.pardus.pevents.model.City;
 import com.pardus.pevents.model.Event;
 import com.pardus.pevents.model.Search;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class RequestMapper {
 
-    public static Search map(SearchDTO searchDTO){
+    public Search map(SearchDTO searchDTO){
 
         Search result = new Search();
         result.setName(searchDTO.getEventName());
@@ -22,7 +23,7 @@ public class RequestMapper {
         return result;
     }
 
-    public static Event map(EventDTO eventDTO){
+    public Event map(EventDTO eventDTO){
         Event event=new Event();
         event.setName(eventDTO.getName());
         event.setDateFrom(eventDTO.getDateFrom());
@@ -35,7 +36,7 @@ public class RequestMapper {
         return event;
     }
 
-    public static City map(CityDTO cityDTO){
+    public City map(CityDTO cityDTO){
         City city=new City();
         city.setId(cityDTO.getId());
         city.setName(cityDTO.getName());
@@ -43,7 +44,7 @@ public class RequestMapper {
         return city;
     }
 
-    public static Event mapUpdate(EventDTO eventDTO){
+    public Event mapUpdate(EventDTO eventDTO){
         Event event=new Event();
 
         event.setId(eventDTO.getId());

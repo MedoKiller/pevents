@@ -4,13 +4,15 @@ import com.pardus.pevents.dto.CityDTO;
 import com.pardus.pevents.dto.EventDTO;
 import com.pardus.pevents.model.City;
 import com.pardus.pevents.model.Event;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class ResponseMapper {
 
-    public static EventDTO map(Event event){
+    public EventDTO map(Event event){
         EventDTO eventDTO = new EventDTO();
         eventDTO.setId(event.getId());
         eventDTO.setName(event.getName());
@@ -18,7 +20,7 @@ public class ResponseMapper {
         return eventDTO;
     }
 
-    public static List<EventDTO> mapEvents(List<Event> events){
+    public List<EventDTO> mapEvents(List<Event> events){
         List<EventDTO> eventDTOS= new ArrayList<>();
 
         for (Event event : events) {
@@ -37,7 +39,7 @@ public class ResponseMapper {
         return eventDTOS;
     }
 
-    public static CityDTO map(City city){
+    public CityDTO map(City city){
         CityDTO cityDTO=new CityDTO();
         cityDTO.setId(city.getId());
         cityDTO.setName(city.getName());
@@ -45,7 +47,7 @@ public class ResponseMapper {
         return cityDTO;
     }
 
-    public static List<CityDTO> mapCities(List<City> cities){
+    public List<CityDTO> mapCities(List<City> cities){
 
         List<CityDTO> citiesDTO = new ArrayList<>();
 

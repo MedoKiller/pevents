@@ -16,9 +16,13 @@ import java.util.List;
 public class EventController {
 
     private final EventService eventService;
+    private final ResponseMapper responseMapper;
+    private final RequestMapper requestMapper;
 
-    public EventController(EventService eventService) {
+    public EventController(EventService eventService, ResponseMapper responseMapper,RequestMapper requestMapper) {
         this.eventService = eventService;
+        this.responseMapper=responseMapper;
+        this.requestMapper=requestMapper;
     }
 
     @GetMapping("/all")
@@ -35,15 +39,15 @@ public class EventController {
 
     @PostMapping("/add")
     public ResponseEntity<EventDTO> addEvent(@RequestBody EventDTO eventDTO){
-        Event newEvent=eventService.addEvent(RequestMapper.map(eventDTO));
-        EventDTO respEvent= ResponseMapper.map(newEvent);
+        Event newEvent=eventService.addEvent(requestMapper.map(eventDTO));
+        EventDTO respEvent= responseMapper.map(newEvent);
         return new ResponseEntity<>(respEvent, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
     public ResponseEntity<EventDTO> updateEvent(@RequestBody EventDTO eventDTO){
-        Event updateEvent=eventService.updateEvent(RequestMapper.mapUpdate(eventDTO));
-        EventDTO respEvent = ResponseMapper.map(updateEvent);
+        Event updateEvent=eventService.updateEvent(requestMapper.mapUpdate(eventDTO));
+        EventDTO respEvent = responseMapper.map(updateEvent);
         return new ResponseEntity<>(respEvent, HttpStatus.OK);
     }
 

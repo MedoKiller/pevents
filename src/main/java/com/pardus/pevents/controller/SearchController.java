@@ -21,18 +21,22 @@ import java.util.List;
 public class SearchController {
 
     private final SearchService searchService;
+    private final ResponseMapper responseMapper;
+    private final RequestMapper requestMapper;
 
 
-    public SearchController(SearchService searchService) {
+    public SearchController(SearchService searchService, ResponseMapper responseMapper, RequestMapper requestMapper) {
         this.searchService = searchService;
+        this.responseMapper=responseMapper;
+        this.requestMapper=requestMapper;
     }
 
 
     @PostMapping("/filter")
     public ResponseEntity<List<EventDTO>> addEvent(@RequestBody SearchDTO searchDTO){
-        Search search= RequestMapper.map(searchDTO);
+        Search search= requestMapper.map(searchDTO);
         List<Event> events=searchService.doSearch(search);
-        List<EventDTO> respEvents = ResponseMapper.mapEvents(events);
+        List<EventDTO> respEvents = responseMapper.mapEvents(events);
         return new ResponseEntity<>(respEvents, HttpStatus.CREATED);
     }
 

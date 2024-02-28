@@ -15,15 +15,17 @@ import java.util.List;
 public class CityController {
 
     private final CityService cityService;
+    private final ResponseMapper responseMapper;
 
-    public CityController(CityService cityService) {
+    public CityController(CityService cityService,ResponseMapper responseMapper) {
         this.cityService = cityService;
+        this.responseMapper=responseMapper;
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<CityDTO>> getAllCities(){
         List<City> cities=cityService.findAllCities();
-        List<CityDTO> citiesResp= ResponseMapper.mapCities(cities);
+        List<CityDTO> citiesResp= responseMapper.mapCities(cities);
         return new ResponseEntity<>(citiesResp, HttpStatus.OK);
     }
 
