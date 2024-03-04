@@ -1,7 +1,6 @@
 package com.pardus.pevents.controller;
 
 import com.pardus.pevents.model.OrganizationUnit;
-import com.pardus.pevents.model.OrganizationUnitType;
 import com.pardus.pevents.service.OrganizationUnitService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

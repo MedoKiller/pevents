@@ -33,7 +33,7 @@ public class SearchController {
 
 
     @PostMapping("/filter")
-    public ResponseEntity<List<EventDTO>> addEvent(@RequestBody SearchDTO searchDTO){
+    public ResponseEntity<List<EventDTO>> searchEvents(@RequestBody SearchDTO searchDTO){
         Search search= requestMapper.map(searchDTO);
         List<Event> events=searchService.doSearch(search);
         List<EventDTO> respEvents = responseMapper.mapEvents(events);

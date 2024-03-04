@@ -1,6 +1,7 @@
 package com.pardus.pevents.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pardus.pevents.dto.EventDTO;
 import com.pardus.pevents.mapper.RequestMapper;
 import com.pardus.pevents.mapper.ResponseMapper;
 import com.pardus.pevents.model.Event;
@@ -19,9 +20,11 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,6 +52,8 @@ class EventControllerTest {
 
     private Event event1;
     private Event event2;
+    private EventDTO requestEventDTO;
+    private EventDTO responseEventDTO;
 
     @BeforeEach
     void setUp() {
@@ -56,6 +61,10 @@ class EventControllerTest {
         this.event1.setName("TestEvent1");
         this.event2=new Event();
         this.event2.setName("TestEvent2");
+        this.requestEventDTO=new EventDTO();
+        this.requestEventDTO.setName("TestRequestEventDTO");
+        this.responseEventDTO=new EventDTO();
+        this.responseEventDTO.setName("TestResponseEventDTO");
     }
 
     @Test
@@ -91,14 +100,61 @@ class EventControllerTest {
     }
 
     @Test
-    void testAddEvent() {
+    void testAddEvent() throws Exception {
+
+        // any() used because request and response mapper methods create new objects
+        // so mockito thinks different objects are used, and it fails the test on verify
+        // example when verify fails ---
+        // { when(requestMapper.map(requestEventDTO)).thenReturn(event1);
+        // verify(requestMapper, times(1)).map(requestEventDTO)); }
+
+
+        when(requestMapper.map(any(EventDTO.class))).thenReturn(event1);
+        when(eventService.addEvent(event1)).thenReturn(event1);
+        when(responseMapper.map(any(Event.class))).thenReturn(responseEventDTO);
+
+        ResultActions resultActions=mockMvc.perform(post("/event/add")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(requestEventDTO)));
+
+        resultActions.andExpect(status().isCreated())
+                .andExpect(content().json(objectMapper.writeValueAsString(responseEventDTO)))
+                .andDo(MockMvcResultHandlers.print());
+
+        verify(requestMapper, times(1)).map(any(EventDTO.class));
+        verify(eventService, times(1)).addEvent(event1);
+        verify(responseMapper, times(1)).map(any(Event.class));
+
     }
 
     @Test
-    void testUpdateEvent() {
+    void testUpdateEvent() throws Exception {
+        when(requestMapper.mapUpdate(any(EventDTO.class))).thenReturn(event1);
+        when(eventService.updateEvent(event1)).thenReturn(event1);
+        when(responseMapper.map(any(Event.class))).thenReturn(responseEventDTO);
+
+        ResultActions resultActions=mockMvc.perform(put("/event/update")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(requestEventDTO)));
+
+        resultActions.andExpect(status().isOk())
+                .andExpect(content().json(objectMapper.writeValueAsString(responseEventDTO)))
+                .andDo(MockMvcResultHandlers.print());
+
+        verify(requestMapper, times(1)).mapUpdate(any(EventDTO.class));
+        verify(eventService, times(1)).updateEvent(event1);
+        verify(responseMapper, times(1)).map(any(Event.class));
     }
 
     @Test
-    void testDeleteEvent() {
+    void testDeleteEvent() throws Exception {
+        Long eventId=1L;
+
+        doNothing().when(eventService).deleteEvent(eventId);
+
+        ResultActions resultActions=mockMvc.perform(delete("/event/delete/{id}",eventId)
+                .contentType(MediaType.APPLICATION_JSON));
+
+        resultActions.andExpect(status().isOk());
     }
 }
