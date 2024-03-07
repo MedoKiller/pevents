@@ -6,6 +6,7 @@ import org.hibernate.annotations.ColumnDefault;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -26,10 +27,10 @@ public class Event implements Serializable {
     private String name;
 
     @Column(name = "vrijeme_od")
-    private Timestamp dateFrom;
+    private OffsetDateTime dateFrom;
 
     @Column(name = "vrijeme_do")
-    private Timestamp dateTo;
+    private OffsetDateTime dateTo;
 
     @Column(name = "slobodan_ulaz")
     private String freeEntrance;
@@ -42,7 +43,7 @@ public class Event implements Serializable {
         this.freeEntrance=DEFAULT_ENTRANCE;
     }
 
-    public Event(String name, Timestamp dateFrom, Timestamp dateTo, String freeEntrance, City city) {
+    public Event(String name, OffsetDateTime dateFrom, OffsetDateTime dateTo, String freeEntrance, City city) {
         this.name = name;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
@@ -66,19 +67,19 @@ public class Event implements Serializable {
         this.name = name;
     }
 
-    public Timestamp getDateFrom() {
+    public OffsetDateTime getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(Timestamp dateFrom) {
+    public void setDateFrom(OffsetDateTime dateFrom) {
         this.dateFrom = dateFrom;
     }
 
-    public Timestamp getDateTo() {
+    public OffsetDateTime getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(Timestamp dateTo) {
+    public void setDateTo(OffsetDateTime dateTo) {
         this.dateTo = dateTo;
     }
 

@@ -1,6 +1,8 @@
 package com.pardus.pevents.dto;
 
 import java.sql.Timestamp;
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 
 
 public class EventDTO {
@@ -10,9 +12,9 @@ public class EventDTO {
 
     private String name;
 
-    private Timestamp dateFrom;
+    private OffsetDateTime dateFrom;
 
-    private Timestamp dateTo;
+    private OffsetDateTime dateTo;
 
     private String freeEntrance;
 
@@ -34,19 +36,19 @@ public class EventDTO {
         this.name = name;
     }
 
-    public Timestamp getDateFrom() {
+    public OffsetDateTime getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(Timestamp dateFrom) {
+    public void setDateFrom(OffsetDateTime dateFrom) {
         this.dateFrom = dateFrom;
     }
 
-    public Timestamp getDateTo() {
+    public OffsetDateTime getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(Timestamp dateTo) {
+    public void setDateTo(OffsetDateTime dateTo) {
         this.dateTo = dateTo;
     }
 

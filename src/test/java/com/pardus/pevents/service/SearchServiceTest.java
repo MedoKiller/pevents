@@ -30,8 +30,8 @@ class SearchServiceTest {
         testSearch.setName("Name");
         String searchName=(testSearch.getName()!=null) ? "%"+testSearch.getName().toLowerCase()+"%" : null;
 
-        testSearch.setDateFrom(DateUtils.timestampToZonedDT("01.01.2024 12:00"));
-        testSearch.setDateTo(DateUtils.timestampToZonedDT("02.01.2024 12:00"));
+        testSearch.setDateFrom(DateUtils.timestampToZonedDT("01.01.2024 12:00").toOffsetDateTime());
+        testSearch.setDateTo(DateUtils.timestampToZonedDT("02.01.2024 12:00").toOffsetDateTime());
         testSearch.setFreeEntrance("NE");
         testSearch.setCityIds(List.of(1L,2L,3L));
 

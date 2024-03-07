@@ -4,11 +4,17 @@ import com.pardus.pevents.exception.EventNotFoundException;
 import com.pardus.pevents.model.Event;
 import com.pardus.pevents.model.Search;
 import com.pardus.pevents.repo.EventRepo;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
+import java.util.TimeZone;
 
 @Service
 public class EventService {

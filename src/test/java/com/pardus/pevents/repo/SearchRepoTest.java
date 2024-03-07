@@ -43,11 +43,11 @@ class SearchRepoTest {
         savedCity2=cityRepo.save(city2);
 
 
-        Event event1 = new Event("Test1", DateUtils.parseTimestamp("20.02.2024 12:00"),DateUtils.parseTimestamp("21.02.2024 12:00"),"NE",city1);
-        Event event2 = new Event("Test2", DateUtils.parseTimestamp("20.02.2024 12:00"),DateUtils.parseTimestamp("22.02.2024 12:00"),"NE",city2);
-        Event event3 = new Event("Test3", DateUtils.parseTimestamp("10.02.2024 12:00"),DateUtils.parseTimestamp("15.02.2024 12:00"),"DA",city1);
-        Event event4 = new Event("Test4", DateUtils.parseTimestamp("01.02.2024 12:00"),DateUtils.parseTimestamp("05.02.2024 12:00"),"DA",city2);
-        Event event5 = new Event("Test5", DateUtils.parseTimestamp("01.02.2024 12:00"),DateUtils.parseTimestamp("10.02.2024 12:00"),"NE",city1);
+        Event event1 = new Event("Test1", DateUtils.timestampToZonedDT("20.02.2024 12:00").toOffsetDateTime(),DateUtils.timestampToZonedDT("21.02.2024 12:00").toOffsetDateTime(),"NE",city1);
+        Event event2 = new Event("Test2", DateUtils.timestampToZonedDT("20.02.2024 12:00").toOffsetDateTime(),DateUtils.timestampToZonedDT("22.02.2024 12:00").toOffsetDateTime(),"NE",city2);
+        Event event3 = new Event("Test3", DateUtils.timestampToZonedDT("10.02.2024 12:00").toOffsetDateTime(),DateUtils.timestampToZonedDT("15.02.2024 12:00").toOffsetDateTime(),"DA",city1);
+        Event event4 = new Event("Test4", DateUtils.timestampToZonedDT("01.02.2024 12:00").toOffsetDateTime(),DateUtils.timestampToZonedDT("05.02.2024 12:00").toOffsetDateTime(),"DA",city2);
+        Event event5 = new Event("Test5", DateUtils.timestampToZonedDT("01.02.2024 12:00").toOffsetDateTime(),DateUtils.timestampToZonedDT("10.02.2024 12:00").toOffsetDateTime(),"NE",city1);
 
         eventRepo.save(event1);
         eventRepo.save(event2);
@@ -83,7 +83,7 @@ class SearchRepoTest {
 
     @Test
     void doSearch_dateFromTest() throws ParseException {
-        List<Event> foundEvents = searchRepo.doSearch(null, DateUtils.timestampToZonedDT("20.02.2024 12:00"), null, null, null);
+        List<Event> foundEvents = searchRepo.doSearch(null, DateUtils.timestampToZonedDT("20.02.2024 12:00").toOffsetDateTime(), null, null, null);
 
         assertThat(foundEvents.size()).isEqualTo(2);
         assertThat(foundEvents).extracting("name").contains("Test1","Test2");
@@ -91,7 +91,7 @@ class SearchRepoTest {
 
     @Test
     void doSearch_dateToTest() throws ParseException {
-        List<Event> foundEvents = searchRepo.doSearch(null, null, DateUtils.timestampToZonedDT("15.02.2024 12:00"), null, null);
+        List<Event> foundEvents = searchRepo.doSearch(null, null, DateUtils.timestampToZonedDT("15.02.2024 12:00").toOffsetDateTime(), null, null);
 
         assertThat(foundEvents.size()).isEqualTo(3);
         assertThat(foundEvents).extracting("name").contains("Test3","Test4","Test5");
@@ -99,7 +99,7 @@ class SearchRepoTest {
 
     @Test
     void doSearch_dateFromDateToTest() throws ParseException {
-        List<Event> foundEvents = searchRepo.doSearch(null, DateUtils.timestampToZonedDT("01.02.2024 12:00"), DateUtils.timestampToZonedDT("06.02.2024 12:00"), null, null);
+        List<Event> foundEvents = searchRepo.doSearch(null, DateUtils.timestampToZonedDT("01.02.2024 12:00").toOffsetDateTime(), DateUtils.timestampToZonedDT("06.02.2024 12:00").toOffsetDateTime(), null, null);
 
         assertThat(foundEvents.size()).isEqualTo(1);
         assertThat(foundEvents).extracting("name").contains("Test4");

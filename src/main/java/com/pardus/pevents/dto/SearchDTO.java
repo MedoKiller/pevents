@@ -1,5 +1,6 @@
 package com.pardus.pevents.dto;
 
+import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -7,9 +8,9 @@ public class SearchDTO {
 
     private String eventName;
 
-    private ZonedDateTime dateFrom;
+    private OffsetDateTime dateFrom;
 
-    private ZonedDateTime dateTo;
+    private OffsetDateTime dateTo;
 
     private String freeEntrance;
 
@@ -39,19 +40,19 @@ public class SearchDTO {
         this.cityIds = cityIds;
     }
 
-    public ZonedDateTime getDateFrom() {
+    public OffsetDateTime getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(ZonedDateTime dateFrom) {
+    public void setDateFrom(OffsetDateTime dateFrom) {
         this.dateFrom = dateFrom;
     }
 
-    public ZonedDateTime getDateTo() {
+    public OffsetDateTime getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(ZonedDateTime dateTo) {
+    public void setDateTo(OffsetDateTime dateTo) {
         this.dateTo = dateTo;
     }
 }

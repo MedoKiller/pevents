@@ -35,8 +35,8 @@ class RequestMapperTest {
     void testMapSearchDTOToSearch() {
         SearchDTO searchDTO = new SearchDTO();
         searchDTO.setEventName("Test Event");
-        searchDTO.setDateFrom(DateUtils.timestampToZonedDT("01.01.2024 12:00"));
-        searchDTO.setDateTo(DateUtils.timestampToZonedDT("02.01.2024 12:00"));
+        searchDTO.setDateFrom(DateUtils.timestampToZonedDT("01.01.2024 12:00").toOffsetDateTime());
+        searchDTO.setDateTo(DateUtils.timestampToZonedDT("02.01.2024 12:00").toOffsetDateTime());
         searchDTO.setFreeEntrance("NE");
         List<Long> cityIds = Arrays.asList(1L, 2L);
         searchDTO.setCityIds(cityIds);
@@ -55,8 +55,8 @@ class RequestMapperTest {
         // Given: an EventDTO with known values, including a nested CityDTO
         EventDTO eventDTO = new EventDTO();
         eventDTO.setName("Event Name");
-        eventDTO.setDateFrom(DateUtils.parseTimestamp("20.02.2024 12:00"));
-        eventDTO.setDateTo(DateUtils.parseTimestamp("21.02.2024 12:00"));
+        eventDTO.setDateFrom(DateUtils.timestampToZonedDT("20.02.2024 12:00").toOffsetDateTime());
+        eventDTO.setDateTo(DateUtils.timestampToZonedDT("21.02.2024 12:00").toOffsetDateTime());
         eventDTO.setFreeEntrance("NE");
         CityDTO cityDTO = new CityDTO();
         cityDTO.setId(1L);
@@ -91,8 +91,8 @@ class RequestMapperTest {
         EventDTO eventDTO = new EventDTO();
         eventDTO.setId(3L);
         eventDTO.setName("Updated Event Name");
-        eventDTO.setDateFrom(DateUtils.parseTimestamp("10.02.2024 12:00"));
-        eventDTO.setDateTo(DateUtils.parseTimestamp("11.02.2024 12:00"));
+        eventDTO.setDateFrom(DateUtils.timestampToZonedDT("10.02.2024 12:00").toOffsetDateTime());
+        eventDTO.setDateTo(DateUtils.timestampToZonedDT("11.02.2024 12:00").toOffsetDateTime());
         eventDTO.setFreeEntrance("DA");
         CityDTO cityDTO = new CityDTO();
         cityDTO.setId(2L);

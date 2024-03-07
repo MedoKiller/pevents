@@ -6,6 +6,7 @@ import com.pardus.pevents.repo.SearchRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class SearchService {
     public List<Event> doSearch(Search search){
 
         String searchName=(search.getName()!=null) ? "%"+search.getName().toLowerCase()+"%" : null;
-        ZonedDateTime dateFrom=search.getDateFrom();
-        ZonedDateTime dateTo=search.getDateTo();
+        OffsetDateTime dateFrom=search.getDateFrom();
+        OffsetDateTime dateTo=search.getDateTo();
         String freeEntrance=search.getFreeEntrance();
         List<Long> cityIds=search.getCityIds();
 
